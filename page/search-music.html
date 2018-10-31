@@ -2,48 +2,999 @@
 <html>
 <head>
     <title>Play with mp3</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="../css/search-music.css">
+    <style>
+        #list-song{
+
+            padding:30px;
+            background: #dfe4e6;
+        }
+        .fone{
+
+            background-image: url("https://thewallpaper.co/wp-content/uploads/2016/03/white-daisies-high-definition-wallpaper-download-white-daisies-photos-free-display-amazing-pictures-samsung-backgrounds-1600x1200-768x576.jpg");
+            height:200px;
+            border-radius: 10px;
+            position: fixed;
+            width:100%;
+            top:0;
+            right:3px
+
+
+
+
+        }
+        h1{
+            padding:30px;
+            font-size:50px
+
+        }
+        * {
+            font-family: Tahoma;
+            margin: 7px;
+        }
+        .song-item {
+
+            border: 1px solid rgba(13,23,20,0.2);
+            border-radius: 15px;
+            background: #ffff;
+            margin:20px 60px;
+        }
+        .song-item:after {
+            content: '';
+            clear: both;
+            display: table;
+        }
+        .song-index {
+            float: left;
+            width: 5%;
+            font-size: 30px;
+            font-weight: bold;
+            text-align: center;
+            padding-top: 2%;
+            padding-left: 1%;
+        }
+        .song-thumbnail {
+            float: left;
+            width: 10%;
+        }
+        .song-thumbnail img {
+            width: 100%;
+            border-radius: 10px;
+        }
+        .song-infor {
+            padding-top: 1%;
+            float: left;
+            width: 20%;
+        }
+        .song-infor .song-name {
+            font-weight: bold;
+        }
+        .song-infor .song-singer {
+            font-weight: lighter;
+            color: rgba(0,0,23,0.47);
+        }
+        .song-control {
+            padding-top: 3%;
+            color: dodgerblue;
+            cursor: pointer;
+            text-decoration: underline;
+            float: left;
+            width: 10%;
+        }
+
+        .song-detail {
+            float: right;
+            width: 60%;
+            padding-top: 0.5%;
+            font-weight: bold;
+            font-size:20px;
+
+        }
+
+    </style>
 </head>
 <body>
-<div class="list-music">
-   <div class="img"> <img src="https://avatar-nct.nixcdn.com/playlist/2018/10/24/6/a/2/3/1540366414998.jpg" alt="Giả Vờ Nói Yêu Em Đi (Single)">
-    <span>Giả Vờ Nói Yêu Em Đi (Single)</span>
-       <audio controls autoplay="autoplay">
-           <source src=https://od.lk/s/NjFfMjQwMTUwMTFf/MyLove-Westlife-5406564.mp3" type="audio/mpeg">
-       </audio>
-   </div>
-    <div class="img">  <img src="https://avatar-nct.nixcdn.com/playlist/2018/10/26/3/d/f/3/1540529841097.jpg" alt="Đêm Thứ 3 (Single)">
-   <span>Đêm Thứ 3 (Single)</span>
-    </div>
-    <div class="img"><img src="https://avatar-nct.nixcdn.com/playlist/2018/10/04/e/d/6/9/1538636724631.jpg" alt="Hậu Duệ Mặt Trời OST">
-   <span>Hậu Duệ Mặt Trời OST</span>
-    </div>
-    <div class="img"><img src="https://avatar-nct.nixcdn.com/playlist/2018/10/29/b/1/0/e/1540780093310.jpg" alt="Cất Vào Quá Khứ (Single)">
-   <span>Cất Vào Quá Khứ (Single)</span>
-    </div>
-    <div class="img"><img src="https://avatar-nct.nixcdn.com/playlist/2018/09/04/9/4/9/4/1536049422996.jpg" alt="Chạm Lại Bàn Tay Đã Quen (Single)">
-    <span>Chạm Lại Bàn Tay Đã Quen (Single)</span>
+<div class="fone">
+    <h1>My music</h1>
+    <div class="song-player">
+        <div class="song-detail">
+            <marquee behavior="scroll" direction="left">
+                <div class="current-song-title">
+                    <span id="current-play-title"></span>
+                </div>
+            </marquee>
+        </div>
+        <div class="player">
+            <audio controls id="my-mp3" autoplay>
+                <source src="" type="audio/mpeg">
+                Your browser does not support the audio element.
+            </audio>
+        </div>
     </div>
 </div>
-<!--<div class="add-music">-->
-    <!--<div class="img2"> <img src="https://avatar-nct.nixcdn.com/playlist/2018/10/24/6/a/2/3/1540366414998.jpg" alt="Giả Vờ Nói Yêu Em Đi (Single)">-->
-        <!--<span>Giả Vờ Nói Yêu Em Đi (Single)</span>-->
+
+
+<div class="list-song" id="list-song">
+</div>
+<script src="../js/search-music.js"></script>
+</body>
+</html>
+<!--//1-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
     <!--</div>-->
-    <!--<div class="img2">  <img src="https://avatar-nct.nixcdn.com/playlist/2018/10/26/3/d/f/3/1540529841097.jpg" alt="Đêm Thứ 3 (Single)">-->
-        <!--<span>Đêm Thứ 3 (Single)</span>-->
-    <!--</div>-->
-    <!--<div class="img2"><img src="https://avatar-nct.nixcdn.com/playlist/2018/10/04/e/d/6/9/1538636724631.jpg" alt="Hậu Duệ Mặt Trời OST">-->
-        <!--<span>Hậu Duệ Mặt Trời OST</span>-->
-    <!--</div>-->
-    <!--<div class="img2"><img src="https://avatar-nct.nixcdn.com/playlist/2018/10/29/b/1/0/e/1540780093310.jpg" alt="Cất Vào Quá Khứ (Single)">-->
-        <!--<span>Cất Vào Quá Khứ (Single)</span>-->
-    <!--</div>-->
-    <!--<div class="img2"><img src="https://avatar-nct.nixcdn.com/playlist/2018/09/04/9/4/9/4/1536049422996.jpg" alt="Chạm Lại Bàn Tay Đã Quen (Single)">-->
-        <!--<span>Chạm Lại Bàn Tay Đã Quen (Single)</span>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
     <!--</div>-->
 <!--</div>-->
 
-</body>
-</html>
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--2-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//3-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//4-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//5-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//6-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//7-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//8-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//9-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
+<!--//10-->
+<!--<!DOCTYPE html>-->
+<!--<html>-->
+<!--<head>-->
+    <!--<title>Play with mp3</title>-->
+    <!--<style>-->
+        <!--* {-->
+            <!--font-family: Tahoma;-->
+            <!--margin: 7px;-->
+        <!--}-->
+        <!--.song-item {-->
+            <!--border: 1px solid rgba(13,23,20,0.2);-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-item:after {-->
+            <!--content: '';-->
+            <!--clear: both;-->
+            <!--display: table;-->
+        <!--}-->
+        <!--.song-index {-->
+            <!--float: left;-->
+            <!--width: 5%;-->
+            <!--font-size: 30px;-->
+            <!--font-weight: bold;-->
+            <!--text-align: center;-->
+            <!--padding-top: 2%;-->
+            <!--padding-left: 1%;-->
+        <!--}-->
+        <!--.song-thumbnail {-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+        <!--.song-thumbnail img {-->
+            <!--width: 100%;-->
+            <!--border-radius: 10px;-->
+        <!--}-->
+        <!--.song-infor {-->
+            <!--padding-top: 1%;-->
+            <!--float: left;-->
+            <!--width: 20%;-->
+        <!--}-->
+        <!--.song-infor .song-name {-->
+            <!--font-weight: bold;-->
+        <!--}-->
+        <!--.song-infor .song-singer {-->
+            <!--font-weight: lighter;-->
+            <!--color: rgba(0,0,23,0.47);-->
+        <!--}-->
+        <!--.song-control {-->
+            <!--padding-top: 3%;-->
+            <!--color: dodgerblue;-->
+            <!--cursor: pointer;-->
+            <!--text-decoration: underline;-->
+            <!--float: left;-->
+            <!--width: 10%;-->
+        <!--}-->
+
+        <!--.song-detail {-->
+            <!--float: left;-->
+            <!--width: 50%;-->
+            <!--padding-top: 0.5%;-->
+            <!--font-weight: bold;-->
+        <!--}-->
+    <!--</style>-->
+<!--</head>-->
+<!--<body>-->
+<!--<h1>Song i like</h1>-->
+<!--<div class="song-player">-->
+    <!--<div class="song-detail">-->
+        <!--<marquee behavior="scroll" direction="left">-->
+            <!--<div class="current-song-title">-->
+                <!--<span id="current-play-title"></span>-->
+            <!--</div>-->
+        <!--</marquee>-->
+    <!--</div>-->
+    <!--<div class="player">-->
+        <!--<audio controls id="my-mp3" autoplay>-->
+            <!--<source src="" type="audio/mpeg">-->
+            <!--Your browser does not support the audio element.-->
+        <!--</audio>-->
+    <!--</div>-->
+<!--</div>-->
+
+<!--<div class="list-song" id="list-song">-->
+<!--</div>-->
+<!--<script src="js/mp3.t1808a.js"></script>-->
+<!--</body>-->
+<!--</html>-->
